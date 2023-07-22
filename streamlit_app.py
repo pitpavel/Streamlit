@@ -31,7 +31,7 @@ def userdatasection():
 
 
 def ordersection():
-    st.header('Order')
+    st.markdown(coloredtext_markdown('Order', userdata['color']), unsafe_allow_html=True)
 
     st.write('What would you like to order?')
     col1, col2, col3 = st.columns(3)
@@ -52,6 +52,10 @@ def ordersection():
     if cola:
         st.write("Here you go 🥤")
 
+
+def coloredtext_markdown(text, color):
+    return f'<h2 style="color:{color}">{text}</h2>'
+
 # Установка стиля для всех заголовков на странице
 st.set_page_config(
     page_title="My Streamlit App",
@@ -71,8 +75,7 @@ userdata = userdatasection()
 ordersection()
 
 # Example 3
-st.markdown(f'<h2 style="color: {userdata["'"color"]} + ';">Заголовок 2 синего цвета</h2>', unsafe_allow_html=True)
-st.header('Randoms')
+st.markdown(coloredtext_markdown('Randoms', userdata['color']), unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns(3)
 
